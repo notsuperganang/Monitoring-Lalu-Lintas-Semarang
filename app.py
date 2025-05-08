@@ -16,7 +16,7 @@ from ultralytics import YOLO
 app = Flask(__name__)
 
 # Load YOLO model
-model = YOLO('yolov8l.pt')
+model = YOLO('yolov8l')
 
 # CCTV video paths
 video_paths = [
