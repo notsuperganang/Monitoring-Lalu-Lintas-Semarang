@@ -1,2 +1,5 @@
+[nixpacks]
+language = "python"
+
 [phases.setup]
-aptPkgs = ["libgl1"]
+nixPkgs = ["python312", "opencv4", "mesa", "ffmpeg"]
