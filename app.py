@@ -12,12 +12,11 @@ import time
 import heapq
 import io
 from ultralytics import YOLO
-import requests
 import logging
 import requests
 from collections import deque
 
-# Logging
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
@@ -176,17 +175,6 @@ class VideoStreamHandler:
                 pass
                 
         try:
-
-            # Check if running in Render (or other cloud deployment)
-            is_deployment = os.environ.get('RENDER', 'False') == 'True'
-
-            if is_deployment and not self.video_path.endswith('.ts'):
-                # Untuk stream yang tidak diakses langsung, gunakan placeholder
-                logger.info(f"Running in deployment mode, using placeholder for node {self.node_id}")
-                self.last_frame = self._create_placeholder_frame(
-                    f"Mode Cloud: Data diambil dari server")
-                return False
-
             # Check if file or URL exists before attempting capture
             if self.video_path.startswith(('http://', 'https://')):
                 try:
@@ -689,4 +677,4 @@ if __name__ == '__main__':
     
     # Cleanup on exit
     for handler in stream_handlers.values():
-        handler.stop()  
+        handler.stop()
