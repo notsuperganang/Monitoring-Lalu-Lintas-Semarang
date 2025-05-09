@@ -1,5 +1,0 @@
-[nixpacks]
-language = "python"
-
-[phases.setup]
-nixPkgs = ["python312", "opencv4", "mesa", "ffmpeg"]
